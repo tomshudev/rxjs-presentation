@@ -1,0 +1,501 @@
+<div
+  class="slides"
+  [ngSwitch]="currentSlide$ | async"
+  [ngStyle]="{
+    'background-color': (theme$ | async).backgroundColor,
+    color: (theme$ | async).fontColor
+  }"
+>
+  <app-slide *ngSwitchCase="1">
+    {{ currentlSlide$ | async }}
+    <app-headline [text]="'RxJS Introduction'"></app-headline>
+    <img
+      src="https://cdn-images-1.medium.com/max/512/1*cYNb01903o4RlOUStjIPFA.png"
+      class="logo"
+      alt="RxJS"
+    />
+  </app-slide>
+  <app-slide *ngSwitchCase="2">
+    <app-headline [text]="'History'"></app-headline>
+    <app-subline [text]="'Callbacks, Promises, async-await'"></app-subline>
+  </app-slide>
+  <app-slide *ngSwitchCase="3">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="highlight__function">checkAuth</span>(<span class="highlight__property">authInfo</span> <span class="highlight__keyword">=></span><span [innerHTML]="toHTML('{')"></span>
+  <span class="highlight__function">getUser</span>(<span class="highlight__property">authInfo</span>, <span class="highlight__property">user</span> <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+    <span class="highlight__built-in">console</span>.<span class="highlight__function">log</span>(<span class="highlight__property">user</span>.<span class="highlight__property">name</span>)
+  <span [innerHTML]="toHTML('}')"></span>)
+<span [innerHTML]="toHTML('}')"></span>)</pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="4">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+  <span class="highlight__function">checkAuth</span>()
+    .<span class="highlight__function">then</span>(<span class="highlight__property">authInfo</span> <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+      <span class="highlight__return">return</span> <span class="highlight__function">getUser</span>(<span class="highlight__property">authInfo</span>)
+    <span [innerHTML]="toHTML('}')"></span>)
+    .<span class="highlight__function">then</span>(<span class="highlight__property">user</span> <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+      <span class="highlight__built-in">console</span>.<span class="highlight__function">log</span>(<span class="highlight__property">user</span>.<span class="highlight__property">name</span>)
+    <span [innerHTML]="toHTML('}')"></span>)
+</pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="5">
+    <app-headline [text]="'Observables'"></app-headline>
+    <app-subline [text]="'Arrays over time'"></app-subline>
+  </app-slide>
+  <app-slide *ngSwitchCase="6">
+    <app-interval-slide [interval]="getInterval(3)"></app-interval-slide>
+  </app-slide>
+  <app-slide *ngSwitchCase="7">
+    <app-interval-slide [interval]="getInterval(4)"></app-interval-slide>
+  </app-slide>
+  <app-slide *ngSwitchCase="8">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="highlight__function">interval</span>(<span class="highlight__variable">1000</span>)
+  .<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>(<span class="highlight__property">x</span> <span class="highlight__keyword">=></span> <span class="highlight__built-in">Math</span>.<span class="highlight__function">pow</span>(<span class="highlight__property">x</span>, <span class="highlight__variable">2</span>))
+  )
+</pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="9">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="highlight__function">interval</span>(<span class="highlight__variable">1000</span>)
+  <span class="not-now">.<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>(<span class="highlight__property">x</span> <span class="highlight__keyword">=></span> <span class="highlight__built-in">Math</span>.<span class="highlight__function">pow</span>(<span class="highlight__property">x</span>, <span class="highlight__variable">2</span>))
+  )</span>
+</pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="10">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="not-now"><span class="highlight__function">interval</span>(<span class="highlight__variable">1000</span>)</span>
+  .<span class="highlight__function">pipe</span>(
+    <span class="not-now"><span class="highlight__function">map</span>(<span class="highlight__property">x</span> <span class="highlight__keyword">=></span> <span class="highlight__built-in">Math</span>.<span class="highlight__function">pow</span>(<span class="highlight__property">x</span>, <span class="highlight__variable">2</span>))
+  )</span>
+</pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="11">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="not-now"><span class="highlight__function">interval</span>(<span class="highlight__variable">1000</span>)
+  .<span class="highlight__function">pipe</span>(</span>
+    <span class="highlight__function">map</span>(<span class="highlight__property">x</span> <span class="highlight__keyword">=></span> <span class="highlight__built-in">Math</span>.<span class="highlight__function">pow</span>(<span class="highlight__property">x</span>, <span class="highlight__variable">2</span>))
+  <span class="not-now">)</span>
+</pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="12">
+    <app-interval-slide [interval]="getInterval(9)"></app-interval-slide>
+  </app-slide>
+  <app-slide *ngSwitchCase="13">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="highlight__function">fromEvent</span>(<span class="highlight__property">document</span>, <span class="highlight__string">'mousemove'</span>)
+  .<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">mapTo</span>(<span class="highlight__string">'moved'</span>),
+    <span class="highlight__function">throttleTime</span>(<span class="highlight__variable">300</span>)
+)</pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="14">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="highlight__function">fromEvent</span>(<span class="highlight__property">document</span>, <span class="highlight__string">'mousemove'</span>)
+  <span class="not-now">.<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">mapTo</span>(<span class="highlight__string">'moved'</span>),
+    <span class="highlight__function">throttleTime</span>(<span class="highlight__variable">300</span>)
+)</span></pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="15">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="not-now"><span class="highlight__function">fromEvent</span>(<span class="highlight__property">document</span>, <span class="highlight__string">'mousemove'</span>)
+  .<span class="highlight__function">pipe</span>(</span>
+    <span class="highlight__function">mapTo</span>(<span class="highlight__string">'moved'</span>),
+    <span class="not-now"><span class="highlight__function">throttleTime</span>(<span class="highlight__variable">300</span>)
+)</span></pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="16">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="not-now"><span class="highlight__function">fromEvent</span>(<span class="highlight__property">document</span>, <span class="highlight__string">'mousemove'</span>)
+  .<span class="highlight__function">pipe</span>(</span>
+    <span class="not-now"><span class="highlight__function">mapTo</span>(<span class="highlight__string">'moved'</span>),</span>
+    <span class="highlight__function">throttleTime</span>(<span class="highlight__variable">300</span>)
+<span class="not-now">)</span></pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="17">
+    <app-input-observable-slide
+      [interval]="getInterval(14)"
+    ></app-input-observable-slide>
+  </app-slide>
+  <app-slide *ngSwitchCase="18">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="highlight__keyword">let</span> <span class="highlight__property">rxjsLetters</span> = [<span class="highlight__string">'r'</span>, <span class="highlight__string">'x'</span>, <span class="highlight__string">'j'</span>, <span class="highlight__string">'s'</span>];
+
+<span class="highlight__function">fromEvent</span>(<span class="highlight__property">input</span>, <span class="highlight__string">'keydown'</span>)
+  .<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>(<span class="highlight__property">e</span> <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>),
+    <span class="highlight__function">filter</span>((<span class="highlight__property">key</span>: <span class="highlight__built-in">string</span>) <span class="highlight__keyword">=></span> 
+      <span class="highlight__property">rxjsLetters</span>.<span class="highlight__function">indexOf</span>(<span class="highlight__property">key</span>.<span class="highlight__function">toLowerCase</span>()) !== -<span class="highlight__variable">1</span>)
+)</pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="19">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="highlight__keyword">let</span> <span class="highlight__property">rxjsLetters</span> = [<span class="highlight__string">'r'</span>, <span class="highlight__string">'x'</span>, <span class="highlight__string">'j'</span>, <span class="highlight__string">'s'</span>];
+
+<span class="not-now"><span class="highlight__function">fromEvent</span>(<span class="highlight__property">input</span>, <span class="highlight__string">'keydown'</span>)
+  .<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>(<span class="highlight__property">e</span> <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>),
+    <span class="highlight__function">filter</span>((<span class="highlight__property">key</span>: <span class="highlight__built-in">string</span>) <span class="highlight__keyword">=></span> 
+      <span class="highlight__property">rxjsLetters</span>.<span class="highlight__function">indexOf</span>(<span class="highlight__property">key</span>.<span class="highlight__function">toLowerCase</span>()) !== -<span class="highlight__variable">1</span>)
+)</span></pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="20">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="not-now"><span class="highlight__keyword">let</span> <span class="highlight__property">rxjsLetters</span> = [<span class="highlight__string">'r'</span>, <span class="highlight__string">'x'</span>, <span class="highlight__string">'j'</span>, <span class="highlight__string">'s'</span>];</span>
+
+<span class="highlight__function">fromEvent</span>(<span class="highlight__property">input</span>, <span class="highlight__string">'keydown'</span>)
+  <span class="not-now">.<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>(<span class="highlight__property">e</span> <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>),
+    <span class="highlight__function">filter</span>((<span class="highlight__property">key</span>: <span class="highlight__built-in">string</span>) <span class="highlight__keyword">=></span> 
+      <span class="highlight__property">rxjsLetters</span>.<span class="highlight__function">indexOf</span>(<span class="highlight__property">key</span>.<span class="highlight__function">toLowerCase</span>()) !== -<span class="highlight__variable">1</span>)
+)</span></pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="21">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="not-now"><span class="highlight__keyword">let</span> <span class="highlight__property">rxjsLetters</span> = [<span class="highlight__string">'r'</span>, <span class="highlight__string">'x'</span>, <span class="highlight__string">'j'</span>, <span class="highlight__string">'s'</span>];
+
+<span class="highlight__function">fromEvent</span>(<span class="highlight__property">input</span>, <span class="highlight__string">'keydown'</span>)
+  .<span class="highlight__function">pipe</span>(</span>
+    <span class="highlight__function">map</span>(<span class="highlight__property">e</span> <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>),
+    <span class="not-now"><span class="highlight__function">filter</span>((<span class="highlight__property">key</span>: <span class="highlight__built-in">string</span>) <span class="highlight__keyword">=></span> 
+      <span class="highlight__property">rxjsLetters</span>.<span class="highlight__function">indexOf</span>(<span class="highlight__property">key</span>.<span class="highlight__function">toLowerCase</span>()) !== -<span class="highlight__variable">1</span>)
+)</span></pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="22">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="not-now"><span class="highlight__keyword">let</span> <span class="highlight__property">rxjsLetters</span> = [<span class="highlight__string">'r'</span>, <span class="highlight__string">'x'</span>, <span class="highlight__string">'j'</span>, <span class="highlight__string">'s'</span>];
+
+<span class="highlight__function">fromEvent</span>(<span class="highlight__property">input</span>, <span class="highlight__string">'keydown'</span>)
+  .<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>(<span class="highlight__property">e</span> <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>),</span>
+    <span class="highlight__function">filter</span>((<span class="highlight__property">key</span>: <span class="highlight__built-in">string</span>) <span class="highlight__keyword">=></span> 
+      <span class="highlight__property">rxjsLetters</span>.<span class="highlight__function">indexOf</span>(<span class="highlight__property">key</span>.<span class="highlight__function">toLowerCase</span>()) !== -<span class="highlight__variable">1</span>)
+<span class="not-now">)</span></pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="23">
+    <app-headline [text]="'Subscription'"></app-headline>
+    <app-subline [text]="'Start listening to the `events`'"></app-subline>
+    <app-subline
+      [text]="'The valus will be emitted only if there is a subscription'"
+    ></app-subline>
+  </app-slide>
+  <app-slide *ngSwitchCase="24">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+      <span class="highlight__property">dataStream$</span>.<span class="highlight__function">subscribe</span>(
+        (<span class="highlight__property">value</span>) <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">log</span>(<span class="highlight__property">value</span>)
+        <span [innerHTML]="toHTML('}')"></span>,
+        (<span class="highlight__property">error</span>) <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">error</span>(<span class="highlight__property">error</span>)
+        <span [innerHTML]="toHTML('}')"></span>,
+        () <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">log</span>(<span class="highlight__string">'completed'</span>)
+        <span [innerHTML]="toHTML('}')"></span>
+      )</pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="25">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+      <span class="highlight__property">dataStream$</span>.<span class="highlight__function">subscribe</span>(
+        <span class="not-now">(<span class="highlight__property">value</span>) <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">log</span>(<span class="highlight__property">value</span>)
+        <span [innerHTML]="toHTML('}')"></span>,
+        (<span class="highlight__property">error</span>) <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">error</span>(<span class="highlight__property">error</span>)
+        <span [innerHTML]="toHTML('}')"></span>,
+        () <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">log</span>(<span class="highlight__string">'completed'</span>)
+        <span [innerHTML]="toHTML('}')"></span>
+      )</span></pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="26">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+      <span class="not-now"><span class="highlight__property">dataStream$</span>.<span class="highlight__function">subscribe</span>(</span>
+        (<span class="highlight__property">value</span>) <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">log</span>(<span class="highlight__property">value</span>)
+        <span [innerHTML]="toHTML('}')"></span>,
+        <span class="not-now">(<span class="highlight__property">error</span>) <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">error</span>(<span class="highlight__property">error</span>)
+        <span [innerHTML]="toHTML('}')"></span>,
+        () <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">log</span>(<span class="highlight__string">'completed'</span>)
+        <span [innerHTML]="toHTML('}')"></span>
+      )</span></pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="27">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+      <span class="not-now"><span class="highlight__property">dataStream$</span>.<span class="highlight__function">subscribe</span>(
+        (<span class="highlight__property">value</span>) <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">log</span>(<span class="highlight__property">value</span>)
+        <span [innerHTML]="toHTML('}')"></span>,</span>
+        (<span class="highlight__property">error</span>) <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">error</span>(<span class="highlight__property">error</span>)
+        <span [innerHTML]="toHTML('}')"></span>,
+        <span class="not-now">() <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">log</span>(<span class="highlight__string">'completed'</span>)
+        <span [innerHTML]="toHTML('}')"></span>
+      )</span></pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="28">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+      <span class="not-now"><span class="highlight__property">dataStream$</span>.<span class="highlight__function">subscribe</span>(
+        (<span class="highlight__property">value</span>) <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">log</span>(<span class="highlight__property">value</span>)
+        <span [innerHTML]="toHTML('}')"></span>,
+        (<span class="highlight__property">error</span>) <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">error</span>(<span class="highlight__property">error</span>)
+        <span [innerHTML]="toHTML('}')"></span>,</span>
+        () <span class="highlight__keyword">=></span> <span [innerHTML]="toHTML('{')"></span>
+          <span class="highlight__built-in">console</span>.<span class="highlight__function">log</span>(<span class="highlight__string">'completed'</span>)
+        <span [innerHTML]="toHTML('}')"></span>
+      <span class="not-now">)</span></pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="29">
+    <app-headline [text]="'Merging Observables'"></app-headline>
+    <app-subline [text]="'The cherry at the top'"></app-subline>
+  </app-slide>
+  <app-slide *ngSwitchCase="30">
+    <app-combine-observables-slide
+      [interval]="getInterval(30)"
+    ></app-combine-observables-slide>
+  </app-slide>
+  <app-slide *ngSwitchCase="31">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="highlight__function">combineLatest</span>(
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">document</span>, <span class="highlight__string">'mousemove'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">throttleTime</span>(<span class="highlight__property">300</span>),
+    <span class="highlight__function">map</span>((<span class="highlight__property">x</span>: <span class="highlight__built-in">MouseEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">x</span>.<span class="highlight__property">x</span>)
+  ),
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">firstInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">K<span class="highlight__property">error</span>eyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  ),
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">secondInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">KeyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  )
+).<span class="highlight__function">pipe</span>(
+  <span class="highlight__function">map</span>(
+    ([<span class="highlight__property">move</span>, <span class="highlight__property">firstInput</span>, <span class="highlight__property">secondInput</span>]) <span class="highlight__keyword">=></span>
+      <span class="highlight__string">`</span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">move</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">firstInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">secondInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__string">`</span>
+  )
+)</pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="32">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="highlight__function">combineLatest</span>(
+  <span class="not-now"><span class="highlight__function">fromEvent</span>(<span class="highlight__property">document</span>, <span class="highlight__string">'mousemove'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">throttleTime</span>(<span class="highlight__property">300</span>),
+    <span class="highlight__function">map</span>((<span class="highlight__property">x</span>: <span class="highlight__built-in">MouseEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">x</span>.<span class="highlight__property">x</span>)
+  ),
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">firstInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">K<span class="highlight__property">error</span>eyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  ),
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">secondInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">KeyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  )
+).<span class="highlight__function">pipe</span>(
+  <span class="highlight__function">map</span>(
+    ([<span class="highlight__property">move</span>, <span class="highlight__property">firstInput</span>, <span class="highlight__property">secondInput</span>]) <span class="highlight__keyword">=></span>
+      <span class="highlight__string">`</span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">move</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">firstInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">secondInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__string">`</span>
+  )
+)</span></pre>
+  </app-slide>
+  <app-slide *ngSwitchCase="33">
+      <pre
+        class="highlight"
+        style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+      >
+<span class="not-now"><span class="highlight__function">combineLatest</span>(</span>
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">document</span>, <span class="highlight__string">'mousemove'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">throttleTime</span>(<span class="highlight__property">300</span>),
+    <span class="highlight__function">map</span>((<span class="highlight__property">x</span>: <span class="highlight__built-in">MouseEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">x</span>.<span class="highlight__property">x</span>)
+  ),
+  <span class="not-now"><span class="highlight__function">fromEvent</span>(<span class="highlight__property">firstInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">K<span class="highlight__property">error</span>eyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  ),
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">secondInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">KeyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  )
+).<span class="highlight__function">pipe</span>(
+  <span class="highlight__function">map</span>(
+    ([<span class="highlight__property">move</span>, <span class="highlight__property">firstInput</span>, <span class="highlight__property">secondInput</span>]) <span class="highlight__keyword">=></span>
+      <span class="highlight__string">`</span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">move</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">firstInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">secondInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__string">`</span>
+  )
+)</span></pre>
+    </app-slide>
+    <app-slide *ngSwitchCase="34">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="not-now"><span class="highlight__function">combineLatest</span>(
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">document</span>, <span class="highlight__string">'mousemove'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">throttleTime</span>(<span class="highlight__property">300</span>),
+    <span class="highlight__function">map</span>((<span class="highlight__property">x</span>: <span class="highlight__built-in">MouseEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">x</span>.<span class="highlight__property">x</span>)
+  ),</span>
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">firstInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">K<span class="highlight__property">error</span>eyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  ),
+  <span class="not-now"><span class="highlight__function">fromEvent</span>(<span class="highlight__property">secondInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">KeyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  )
+).<span class="highlight__function">pipe</span>(
+  <span class="highlight__function">map</span>(
+    ([<span class="highlight__property">move</span>, <span class="highlight__property">firstInput</span>, <span class="highlight__property">secondInput</span>]) <span class="highlight__keyword">=></span>
+      <span class="highlight__string">`</span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">move</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">firstInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">secondInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__string">`</span>
+  )
+)</span></pre>
+    </app-slide>
+    <app-slide *ngSwitchCase="35">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="not-now"><span class="highlight__function">combineLatest</span>(
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">document</span>, <span class="highlight__string">'mousemove'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">throttleTime</span>(<span class="highlight__property">300</span>),
+    <span class="highlight__function">map</span>((<span class="highlight__property">x</span>: <span class="highlight__built-in">MouseEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">x</span>.<span class="highlight__property">x</span>)
+  ),
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">firstInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">K<span class="highlight__property">error</span>eyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  ),</span>
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">secondInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">KeyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  )
+<span class="not-now">).<span class="highlight__function">pipe</span>(
+  <span class="highlight__function">map</span>(
+    ([<span class="highlight__property">move</span>, <span class="highlight__property">firstInput</span>, <span class="highlight__property">secondInput</span>]) <span class="highlight__keyword">=></span>
+      <span class="highlight__string">`</span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">move</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">firstInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">secondInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__string">`</span>
+  )
+)</span></pre>
+    </app-slide>
+    <app-slide *ngSwitchCase="36">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="not-now"><span class="highlight__function">combineLatest</span>(
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">document</span>, <span class="highlight__string">'mousemove'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">throttleTime</span>(<span class="highlight__property">300</span>),
+    <span class="highlight__function">map</span>((<span class="highlight__property">x</span>: <span class="highlight__built-in">MouseEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">x</span>.<span class="highlight__property">x</span>)
+  ),
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">firstInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">K<span class="highlight__property">error</span>eyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  ),
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">secondInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">KeyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  )</span>
+).<span class="highlight__function">pipe</span>(
+  <span class="not-now"><span class="highlight__function">map</span>(
+    ([<span class="highlight__property">move</span>, <span class="highlight__property">firstInput</span>, <span class="highlight__property">secondInput</span>]) <span class="highlight__keyword">=></span>
+      <span class="highlight__string">`</span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">move</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">firstInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">secondInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__string">`</span>
+  )
+)</span></pre>
+    </app-slide>
+    <app-slide *ngSwitchCase="37">
+    <pre
+      class="highlight"
+      style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(170, 170, 170);"
+    >
+<span class="not-now"><span class="highlight__function">combineLatest</span>(
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">document</span>, <span class="highlight__string">'mousemove'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">throttleTime</span>(<span class="highlight__property">300</span>),
+    <span class="highlight__function">map</span>((<span class="highlight__property">x</span>: <span class="highlight__built-in">MouseEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">x</span>.<span class="highlight__property">x</span>)
+  ),
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">firstInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">K<span class="highlight__property">error</span>eyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  ),
+  <span class="highlight__function">fromEvent</span>(<span class="highlight__property">secondInput</span>, <span class="highlight__string">'keydown'</span>).<span class="highlight__function">pipe</span>(
+    <span class="highlight__function">map</span>((<span class="highlight__property">e</span>: <span class="highlight__built-in">KeyboardEvent</span>) <span class="highlight__keyword">=></span> <span class="highlight__property">e</span>.<span class="highlight__property">key</span>)
+  )
+).<span class="highlight__function">pipe</span>(</span>
+  <span class="highlight__function">map</span>(
+    ([<span class="highlight__property">move</span>, <span class="highlight__property">firstInput</span>, <span class="highlight__property">secondInput</span>]) <span class="highlight__keyword">=></span>
+      <span class="highlight__string">`</span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">move</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">firstInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__keyword"><span [innerHtml]="toHTML('${')"></span></span><span class="highlight__property">secondInput</span><span class="highlight__keyword"><span [innerHtml]="toHTML('}')"></span></span><span class="highlight__string">`</span>
+  )
+<span class="not-now">)</span></pre>
+    </app-slide>
+    <app-slide *ngSwitchCase="38">
+      <app-headline [text]="'Further reading'"></app-headline>
+      <div class="links">
+      <span class="link">https://www.youtube.com/watch?v=K7AvXUNB2X8&t</span>
+      <span class="link">https://www.youtube.com/watch?v=PhggNGsSQyg</span>
+      <span class="link">https://rxmarbles.com</span>
+      <span class="link">https://rxviz.com</span>
+      <span class="link">https://www.learnrxjs.io</span>
+    </div>
+    </app-slide>
+    <app-slide *ngSwitchCase="39">
+      <span class="big-title">Questions?</span>
+    </app-slide>
+    <app-slide *ngSwitchCase="40">
+      <span class="big-title">Thank You!</span>
+    </app-slide>
+</div>

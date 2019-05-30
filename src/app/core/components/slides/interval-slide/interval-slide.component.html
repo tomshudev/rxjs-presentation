@@ -1,0 +1,32 @@
+<div class="intervals">
+  <div class="headline">{{ interval.headline }}</div>
+  <ng-content> </ng-content>
+  <div class="bar">
+    <div
+      class="line"
+      [@line]="{ value: ':enter', params: { time: interval.time } }"
+    ></div>
+    <div class="line__inner"></div>
+    <div
+      class="circles"
+      [ngClass]="{ 'circles-no-times': !interval.handleTimes }"
+    >
+      <span
+        [ngClass]="{ 'circle-times': interval.handleTimes }"
+        class="circle"
+        *ngFor="let val of values; let i = index"
+        [ngStyle]="{
+          transform: 'translateX(' + calculateX(i) + 'rem)',
+          'margin-top': (interval.handleTimes ? (i === 0 ? 0 : -6) : 0) + 'rem',
+          'background-color': colors[i % colors.length]
+        }"
+        [@circle]="{
+          value: ':enter',
+          params: { x: calculateX(i), y: interval.handleTimes ? -6 * i : 0 }
+        }"
+      >
+        <span>{{ val }}</span>
+      </span>
+    </div>
+  </div>
+</div>
